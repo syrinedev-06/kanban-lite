@@ -18,6 +18,14 @@ switch ($route) {
             showAddForm();
         }
         break;
+        case 'edit':
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        editTaskAction();
+    } else {
+        showEditForm();
+    }
+    break;
+
 
     case 'delete':
         if (isset($_GET['id'])) {

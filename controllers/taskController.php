@@ -4,6 +4,10 @@
 // charge la connexion et le modèle
 require_once __DIR__ . '/../models/db.php';
 require_once __DIR__ . '/../models/taskModel.php';
+// Charger Parsedown pour afficher le markdown
+    require_once __DIR__ . '/../models/Parsedown.php';
+    $Parsedown = new Parsedown();
+
 
 // === Fonction : afficher la liste des tâches ===
 function listTasks() {
@@ -14,6 +18,9 @@ function listTasks() {
     $todo  = getTasksByStatus($pdo, 'todo');
     $doing = getTasksByStatus($pdo, 'doing');
     $done  = getTasksByStatus($pdo, 'done');
+    // Charger Parsedown pour afficher le markdown
+    require_once __DIR__ . '/../models/Parsedown.php';
+    $Parsedown = new Parsedown();
 
     include __DIR__ . '/../views/header.php';
     include __DIR__ . '/../views/list.php';
@@ -58,4 +65,42 @@ function deleteTaskAction($id) {
 
     header('Location: index.php?route=list');
     exit;
+}
+// Afficher le formulaire d’édition
+function showEditForm() {
+    global $pdo;
+    $id = $_GET['id'] ?? null;
+
+    if (!$id) {
+        header("Location: index.php?route=list");
+        exit;
+    }
+
+    $task = getTaskById($pdo, $id);
+    if (!$task) {
+        header("Location: index.php?route=list");
+        exit;
+    }
+
+    include __DIR__ . '/../views/header.php';
+    include __DIR__ . '/../views/form_edit.php';
+    include __DIR__ . '/../views/footer.php';
+}
+
+// Action de mise à jour
+function editTaskAction() {
+    global $pdo;
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_POST['id'] ?? null;
+        $title = trim($_POST['title'] ?? '');
+        $description = trim($_POST['description'] ?? '');
+        $status = $_POST['status'] ?? 'todo';
+
+        if ($id && $title !== '') {
+            updateTask($pdo, $id, $title, $description, $status);
+        }
+        header("Location: index.php?route=list");
+        exit;
+    }
 }
