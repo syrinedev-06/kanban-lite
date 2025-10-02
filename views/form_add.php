@@ -1,18 +1,29 @@
-<h2>Ajouter une tâche</h2>
+<div class="form-container">
+    <h2>➕ Ajouter une tâche</h2>
 
-<form action="index.php?route=add" method="post">
-    <label for="title">Titre :</label><br>
-    <input type="text" id="title" name="title" required><br><br>
+    <form action="index.php?route=add" method="post">
+        <div class="form-group">
+            <label for="title">Titre :</label>
+            <input type="text" id="title" name="title" required>
+        </div>
 
-    <label for="description">Description :</label><br>
-    <textarea id="description" name="description"></textarea><br><br>
+        <div class="form-group">
+            <label for="description">Description (Markdown possible) :</label>
+            <textarea id="description" name="description" rows="5"></textarea>
+        </div>
 
-    <label for="status">Statut :</label><br>
-    <select id="status" name="status">
-        <option value="todo">À faire</option>
-        <option value="doing">En cours</option>
-        <option value="done">Terminé</option>
-    </select><br><br>
+        <div class="form-group">
+            <label for="status">Statut :</label>
+            <select id="status" name="status">
+                <option value="todo">À faire</option>
+                <option value="doing">En cours</option>
+                <option value="done">Terminé</option>
+            </select>
+        </div>
 
-    <button type="submit">Ajouter</button>
-</form>
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">✅ Ajouter</button>
+            <a href="index.php?route=list" class="btn-secondary">↩ Retour</a>
+        </div>
+    </form>
+</div>
