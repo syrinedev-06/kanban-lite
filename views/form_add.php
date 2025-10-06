@@ -1,5 +1,5 @@
 <div class="form-container">
-    <h2>➕ Ajouter une tâche</h2>
+    <h2>Ajouter une tâche</h2>
 
     <form action="index.php?route=add" method="post">
         <div class="form-group">
@@ -8,22 +8,25 @@
         </div>
 
         <div class="form-group">
-            <label for="description">Description (Markdown possible) :</label>
-            <textarea id="description" name="description" rows="5"></textarea>
+            <label for="description">Description :</label>
+            <textarea id="description" name="description"></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="status">Statut :</label>
-            <select id="status" name="status">
-                <option value="todo">À faire</option>
-                <option value="doing">En cours</option>
-                <option value="done">Terminé</option>
-            </select>
+        <div class="form-group status-group">
+            <label>Statut :</label><br>
+            <input type="radio" id="todo" name="status" value="todo">
+            <label for="todo">À faire</label>
+
+            <input type="radio" id="doing" name="status" value="doing">
+            <label for="doing">En cours</label>
+
+            <input type="radio" id="done" name="status" value="done">
+            <label for="done">Terminé</label>
         </div>
 
         <div class="form-actions">
-            <button type="submit" class="btn-primary">✅ Ajouter</button>
-            <a href="index.php?route=list" class="btn-secondary">↩ Retour</a>
+            <a href="index.php" class="btn-secondary">Retour</a>
+            <button type="submit" class="btn-primary">Valider</button>
         </div>
     </form>
 </div>

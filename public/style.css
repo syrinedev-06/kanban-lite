@@ -45,7 +45,7 @@ body {
     color: #2c3e50;
     padding: 8px 15px;
     border-radius: 6px;
-    border: 2px solid #2c3e50; /* contour plus épais */
+    border: 2px solid #2c3e50;
     font-weight: bold;
     transition: 0.2s;
 }
@@ -56,19 +56,23 @@ body {
 }
 
 /* =========================
-   TITRE PRINCIPAL
+   TITRE PRINCIPAL (page uniquement)
 ========================= */
 h2 {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 3px solid #2c3e50; /* plus gras */
-    border-radius: 15px;
-    background-color: #ecf0f1;
-    color: #2c3e50;
     font-size: 1.6em;
     margin: 20px auto;
     text-align: center;
+    color: #2c3e50;
+    font-weight: bold;
 }
+.card h4 {
+      font-weight: normal !important;  /* FORCÉ en normal */
+    font-size: 1.1em;
+    margin: 0 0 5px 0;
+    text-align: left;
+    color: #2c3e50;
+}
+
 
 /* =========================
    BOARD (KANBAN)
@@ -80,20 +84,16 @@ h2 {
     padding: 20px;
 }
 
-/* Colonne */
 .column {
     flex: 1;
     background: #ecf0f1;
-    border: 2px solid #bdc3c7;  /* plus visible */
+    border: 2px solid #bdc3c7;
     border-radius: 15px;
     padding: 15px;
     min-height: 400px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* =========================
-   TITRES DES COLONNES
-========================= */
 .column h3 {
     display: inline-block;
     padding: 8px 16px;
@@ -103,7 +103,7 @@ h2 {
     margin-bottom: 15px;
 }
 
-/* Spécifique à chaque colonne */
+/* Titres spécifiques */
 .column:nth-child(1) h3 { 
     border: 3px solid #e74c3c;
     background: #fdecea;
@@ -126,91 +126,89 @@ h2 {
    CARDS (TÂCHES)
 ========================= */
 .card {
-    background: white;
-    border: 2px solid #ddd; /* plus visible */
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.card h4 {
-    margin: 0 0 5px 0;
-    font-size: 1.1em;
-    color: #34495e;
+    background: none;          /* pas de fond */
+    border: none;              /* pas de cadre */
+    box-shadow: none;          /* pas de cadre */
+    padding: 0;                /* pas de cadre */
+    margin: 8px 0;             /* pas de cadre */
+     margin-bottom: 12px;      /* espace entre les tâches */
+    text-align: left;         /* tout le contenu reste à gauche */
 }
 
 .card p {
-    font-size: 0.9em;
-    color: #555;
     margin: 0 0 8px 0;
-    white-space: pre-line;
+    font-size: 0.95em;
+    color: #555;
+     white-space: pre-line;  /* garde les retours à la ligne */
+    text-align: left;         /* description alignée à gauche */
+    
+}
+.card h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    font-weight: normal;   /* titre pas en gras */
+    text-align: left;
+    color: #2c3e50;
 }
 
-/* Boutons dans les cartes */
+/* Boutons */
 .card-actions {
     display: flex;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content:flex-start;
+    gap: 10px;
 }
 
 .card a {
     flex: 1;
     text-align: center;
-    padding: 6px 10px;
+    padding: 6px 14px;
     border-radius: 6px;
-    font-size: 0.85em;
+    font-size: 0.9em;
     text-decoration: none;
     transition: 0.2s;
     font-weight: bold;
 }
 
-/* Bouton modifier */
 .edit-btn {
     background: #3498db;
     color: white;
     border: 2px solid #21618c;
 }
-.edit-btn:hover {
-    background: #2980b9;
-}
+.edit-btn:hover { background: #2980b9; }
 
-/* Bouton supprimer */
 .delete-btn {
     background: #e74c3c;
     color: white;
     border: 2px solid #922b21;
 }
-.delete-btn:hover {
-    background: #c0392b;
-}
+.delete-btn:hover { background: #c0392b; }
 
 /* =========================
    FORMULAIRE (ADD/EDIT)
 ========================= */
 .form-container {
    background: #f9f9f9;
-    padding: 25px;
-    border: 3px solid #2c3e50;   /* ✅ contour plus gras */
-    border-radius: 12px;
-    max-width: 500px;
-    margin: 30px auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+   padding: 25px;
+   border: 3px solid #2c3e50;
+   border-radius: 12px;
+   max-width: 500px;
+   margin: 30px auto;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 .form-container h2 {
-   display: inline-block;
+    display: inline-block;
     padding: 10px 25px;
-    border: 3px solid #e74c3c;   /* ✅ contour rouge */
+    border: 3px solid #e74c3c;
     border-radius: 12px;
-    background-color: #fdecea;   /* rouge clair derrière */
-    color: #e74c3c;              /* texte rouge */
-    font-size: 2em;              /* ✅ plus grand */
-    font-weight: bold;            /* ✅ très gras */
+    background-color: #fdecea;
+    color: #e74c3c;
+    font-size: 2em;
+    font-weight: bold;
     margin: 20px auto;
-    text-align: center;
-     
+     text-align: center; 
 }
+
 .form-group {
     margin-bottom: 15px;
 }
@@ -222,92 +220,26 @@ h2 {
     color: #444;
 }
 
-/* =========================
-   CHAMPS DU FORMULAIRE
-========================= */
+/* Champs */
 .form-group input,
 .form-group textarea,
 .form-group select {
     width: 100%;
     max-width: 100%;
-     box-sizing: border-box;   /* prend en compte padding + bordure */
-    padding: 10px ;
+    box-sizing: border-box;
+    padding: 10px;
     border: 2px solid #ccc;
     border-radius: 8px;
     font-size: 1em;
     transition: border 0.2s;
-   
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-    border-color: e74c3c; /* contour rouge au focus */
-    box-shadow: 0 0 8px rgba(231, 76, 60, 0.4); /* halo rouge */
-    outline: none;
-    background: #fffaf9;          /* léger fond rosé */
-}
-/* ✅ pour la zone de texte description */
 .form-group textarea {
     min-height: 150px;
-                 
     resize: vertical;
 }
-/* ✅ Menu Statut plus large et stylé */
-.form-group select {
-    height: 50px;            /* plus grand */
-    font-size: 1.1em;
-    background: #f0f8ff;     /* léger bleu clair */
-    border: 2px solid #3498db;
-    cursor: pointer;
-}
 
-.form-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 25px;
-    padding-bottom: 5px;
-}
-
-/* Bouton principal (Ajouter/Modifier) */
-.btn-primary {
-    background: #27ae60;
-    color: white;
-    padding: 14px 35px;
-    border: 3px solid #145a32;  /* ✅ contour vert bien visible */
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 1.2em;           /* ✅ texte plus grand */
-    cursor: pointer;
-   text-decoration: none;
-    transition: 0.3s;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-}
-
-.btn-primary:hover {
-    background: #219150;
-    border-color: #0b3d1d;
-}
-
-/* Bouton retour */
-.btn-secondary {
-    background: #ecf0f1;
-    color: #2c3e50;
-    padding: 12px 25px;
-    border: 3px solid #2c3e50;   /* ✅ contour épais */
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 15px;
-    transition: 0.3s ease;
-}
-
-.btn-secondary:hover {
-    background: #d5dbdb;
-}
-/* ✅ Effet focus */
+/* Focus */
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
@@ -316,30 +248,136 @@ h2 {
     outline: none;
     background: #fffaf9;
 }
-/* Couleur de fond selon le statut */
-#status option[value="todo"] {
-    background: #fdecea;   /* rouge clair */
-    color: #e74c3c;
-    font-weight: bold;
-}
 
-#status option[value="doing"] {
-    background: #fff4e6;   /* orange clair */
-    color: #e67e22;
-    font-weight: bold;
-}
-
-#status option[value="done"] {
-    background: #eafaf1;   /* vert clair */
-    color: #27ae60;
-    font-weight: bold;
-}
-
-/* Style général du select */
+/* =========================
+   SELECT STATUT AVEC CARRÉS
+========================= */
 #status {
     padding: 12px;
     border: 2px solid #2c3e50;
     border-radius: 8px;
     font-size: 1.1em;
     cursor: pointer;
+    background: #fdfdfd;
+}
+
+/* Options */
+#status option[value="todo"] {
+    background: #fdecea;
+    color: #e74c3c;
+    font-weight: bold;
+}
+#status option[value="doing"] {
+    background: #fff4e6;
+    color: #e67e22;
+    font-weight: bold;
+}
+#status option[value="done"] {
+    background: #eafaf1;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.btn-primary {
+    background: #27ae60;
+    color: white;
+    padding: 14px 35px;
+    border: 3px solid #145a32;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-primary:hover { background: #219150; border-color: #0b3d1d; }
+
+.btn-secondary {
+    background: #ecf0f1;
+    color: #2c3e50;
+    padding: 12px 25px;
+    border: 3px solid #2c3e50;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-secondary:hover { background: #d5dbdb; }
+
+/* =========================
+   STATUS GROUP (RADIOS)
+========================= */
+.status-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.status-group input[type="radio"] {
+    display: none;
+}
+
+.status-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.status-group label::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+#todo + label::before { background: #e74c3c; }
+#doing + label::before { background: #e67e22; }
+#done + label::before { background: #27ae60; }
+
+.status-group input[type="radio"]:checked + label {
+    border-color: currentColor;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+#todo:checked + label { color: #e74c3c; }
+#doing:checked + label { color: #e67e22; }
+#done:checked + label { color: #27ae60; }
+/* Supprime les styles globaux pour les titres uniquement dans les cartes */
+.card h1, 
+.card h2, 
+.card h3, 
+.card h5, 
+.card h6 {
+   
+    font-weight: bold;      /* eux restent en gras */
+    
+    text-align: left;
+}
+.board {
+    display: flex;
+    flex-wrap: wrap;           /* permet aux colonnes de passer à la ligne */
+    gap: 20px;
+    padding: 20px;
+}
+
+.column {
+    flex: 1 1 300px;           /* largeur minimum 300px puis s'adapte */
+    max-width: 100%;           /* ne dépasse jamais */
 }
